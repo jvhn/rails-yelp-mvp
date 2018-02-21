@@ -1,0 +1,30 @@
+
+<div class="restaurant-flexbox">
+  <h1><%= @restaurant.name %></h1>
+
+  <p><%= @restaurant.address %></p>
+
+  <p><%= @restaurant.category %></p>
+
+  <p><%= @restaurant.phone_number %></p>
+
+
+  <div class="btn-group" role="group">
+    <%= link_to 'Ajouter un commentaire', new_restaurant_review_path(@restaurant), class: 'btn btn-light' %>
+    <%= link_to 'Editer', edit_restaurant_path(@restaurant), class: 'btn btn-light' %>
+    <%= link_to 'Supprimer', restaurant_path(@restaurant), method: :delete, class: 'btn btn-light' %>
+  </div>
+</div>
+
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item">
+      <h5>
+        <%= review.title %>
+      </h5>
+      <p>
+        <%= review.comment %>
+      </p>
+    </li>
+  <% end %>
+</ul>
